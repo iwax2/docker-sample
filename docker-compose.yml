@@ -1,0 +1,13 @@
+version: '3'
+services:
+  webserver:
+    build: node
+    image: node-express-dev:1.0
+    container_name: node
+    tty: true
+    volumes:
+      - ./node/app:/app
+    ports:
+      - "8080:3000"
+    command: [sh, -c, "express -f --view=pug /app && npm install && npm start"]
+
